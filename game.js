@@ -35,7 +35,6 @@ let chaosMode = false;
 let lastSearchTerm = '';
 let quizActive = false;
 let quizInterval = null;
-let currentUser = null;
 
 
 const funFacts = [
