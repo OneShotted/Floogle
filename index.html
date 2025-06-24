@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Floogle - The Fun Search Engine</title>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Floogle</title>
   <link href="style.css" rel="stylesheet" />
 </head>
-<body>
+<body class="light medium">
   <div class="top-bar">
+    <div id="search-count">Searches: 0</div>
     <div class="theme-selector">
       Theme:
       <select id="theme-select">
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="rainbow">Rainbow</option>
+        <option value="matrix">Matrix</option>
+        <option value="90s">90s Web</option>
       </select>
     </div>
-    <div id="search-count">Searches: 0</div>
+  </div>
+
+  <!-- Settings -->
+  <div id="settings-icon">⚙️</div>
+  <div id="settings-panel" class="hidden">
+    <h2>Settings</h2>
+    <label>Logo Text: <input type="text" id="custom-logo" placeholder="Floogle" /></label>
+    <label>Text Size:
+      <select id="text-size">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="toggle-safe" /> Safe Search (no jokes)</label>
+    <label><input type="checkbox" id="toggle-auto" /> Auto Search on Type</label>
+    <label><input type="checkbox" id="toggle-suggest" checked /> Search Suggestions</label>
+    <label><input type="checkbox" id="toggle-delay" /> Search Delay Mode</label>
+    <label><input type="checkbox" id="toggle-easter" checked /> Enable Easter Eggs</label>
+    <label><input type="checkbox" id="toggle-quiz" checked /> Quiz Mode every 3 searches</label>
+    <label><input type="checkbox" id="toggle-sponsored" /> Sponsored Results</label>
+    <label><input type="checkbox" id="toggle-sound" checked /> Sound FX</label>
+    <label><input type="checkbox" id="toggle-virus" /> Fake Virus Mode</label>
+    <label><input type="checkbox" id="toggle-chaos" /> Lucky Chaos Mode</label>
+    <button id="close-settings">Close</button>
   </div>
 
   <div class="container">
@@ -33,13 +59,12 @@
   </div>
 
   <div class="sidebar">
-    <h3>🌟 Fun Floogle Fact</h3>
-    <div id="fun-fact"></div>
+    <h3>🌟 Floogle Fact</h3><div id="fun-fact"></div>
     <div id="quiz-container"></div>
   </div>
 
   <audio id="search-sound" src="https://freesound.org/data/previews/66/66717_931655-lq.mp3"></audio>
-
   <script src="game.js"></script>
 </body>
 </html>
+
