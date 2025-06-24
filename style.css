@@ -399,4 +399,9 @@ button:hover {
   box-sizing: border-box;
 }
 
+/* Hide utility */
+.hidden {
+  display: none !important;
+}
+
 
