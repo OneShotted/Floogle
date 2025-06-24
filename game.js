@@ -193,57 +193,13 @@ function doSearch(term) {
   }
 }
 
+ // Lucky button: open first matching result
 function feelingLucky() {
   if (!lastSearchTerm) return;
-
-  // Filter dummyData based on safeSearch
   const filteredData = safeSearch ? dummyData.filter(r => !r.title.toLowerCase().includes('funny')) : dummyData;
-
-  // Find all matched dummyData results
-  const matchedDummyResults = filteredData.filter(r =>
-    r.title.toLowerCase().includes(lastSearchTerm.toLowerCase()) ||
-    r.snippet.toLowerCase().includes(lastSearchTerm.toLowerCase())
-  );
-
-  // Your 7 funny URLs
-  const funnyUrls = [
-    "https://gettricked.net/",
-    "https://yournotsmart.co/",
-    "https://tomfoolery.info/",
-    "https://wikipodium.rizz/",
-    "https://info.pro/",
-    "https://newinformation.com/",
-    "https://freshavacado.net/"
-  ];
-
-  // Create dynamic funny results similar to your renderResults function
-  const funnyTemplates = [
-    "5 facts about ({term}) that will shock you!",
-    "Why everyone is talking about ({term})",
-    "The ultimate guide to ({term})",
-    "Top 10 memes related to ({term})",
-    "How ({term}) changed the world",
-    "Secrets about ({term}) you didn't know",
-    "Is ({term}) the next big thing? Experts weigh in"
-  ];
-
-  // Build an array of all results (dummy + funny)
-  const allResults = [];
-
-  // Add matched dummy results
-  matchedDummyResults.forEach(r => allResults.push({ title: r.title, link: r.link }));
-
-  // Add funny results with your URLs
-  for (let i = 0; i < funnyTemplates.length; i++) {
-    const title = funnyTemplates[i].replace(/\(\{term\}\)/g, lastSearchTerm);
-    const link = funnyUrls[i] + encodeURIComponent(lastSearchTerm.toLowerCase().replace(/\s+/g, '-'));
-    allResults.push({ title, link });
-  }
-
-  // Pick a random result
-  if (allResults.length > 0) {
-    const randomIndex = Math.floor(Math.random() * allResults.length);
-    window.open(allResults[randomIndex].link, '_blank');
+  const firstMatch = filteredData.find(r => r.title.toLowerCase().includes(lastSearchTerm.toLowerCase()) || r.snippet.toLowerCase().includes(lastSearchTerm.toLowerCase()));
+  if (firstMatch) {
+    window.open(firstMatch.link, '_blank');
   }
 }
 
