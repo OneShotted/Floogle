@@ -95,20 +95,20 @@ function updateSearchCount() {
   searchCountDisplay.textContent = `Searches: ${searchCount}`;
 }
 
-// Render search results for term
+// --- UPDATED renderResults function ---
 function renderResults(term) {
   resultsDiv.innerHTML = '';
+
   // If safeSearch, no jokes (dummy example)
   const filteredData = safeSearch ? dummyData.filter(r => !r.title.toLowerCase().includes('funny')) : dummyData;
 
-  // Simple filtering: show results with term in title or snippet
-  const matches = filteredData.filter(r => r.title.toLowerCase().includes(term.toLowerCase()) || r.snippet.toLowerCase().includes(term.toLowerCase()));
+  // Show matches from dummyData filtered by search term
+  const matches = filteredData.filter(r =>
+    r.title.toLowerCase().includes(term.toLowerCase()) ||
+    r.snippet.toLowerCase().includes(term.toLowerCase())
+  );
 
-  if (matches.length === 0) {
-    resultsDiv.innerHTML = `<p>No results found for <strong>${term}</strong>.</p>`;
-    return;
-  }
-
+  // Render existing matched results first
   matches.forEach(r => {
     const item = document.createElement('div');
     item.classList.add('result-item');
@@ -119,7 +119,38 @@ function renderResults(term) {
     `;
     resultsDiv.appendChild(item);
   });
+
+  // Then add 7 funny dynamic results based on search term
+  const funnyTemplates = [
+    "5 facts about ({term}) that will shock you!",
+    "Why everyone is talking about ({term})",
+    "The ultimate guide to ({term})",
+    "Top 10 memes related to ({term})",
+    "How ({term}) changed the world",
+    "Secrets about ({term}) you didn't know",
+    "Is ({term}) the next big thing? Experts weigh in"
+  ];
+
+  for (let i = 0; i < funnyTemplates.length; i++) {
+    const title = funnyTemplates[i].replace(/\(\{term\}\)/g, term);
+    const fakeLink = `https://fakelink${i + 1}.net/${encodeURIComponent(term.toLowerCase().replace(/\s+/g, '-'))}`;
+
+    const item = document.createElement('div');
+    item.classList.add('result-item');
+    item.innerHTML = `
+      <a href="${fakeLink}" class="result-title" target="_blank" rel="noopener noreferrer">${title}</a>
+      <div class="result-link">${fakeLink}</div>
+      <div class="result-snippet">Click here to find out more about "${term}"!</div>
+    `;
+    resultsDiv.appendChild(item);
+  }
+
+  // If no results at all (matches + funny) show no results message (only if no dummyData matched)
+  if (matches.length === 0 && funnyTemplates.length === 0) {
+    resultsDiv.innerHTML = `<p>No results found for <strong>${term}</strong>.</p>`;
+  }
 }
+// --- END UPDATED renderResults ---
 
 // Show autocomplete suggestions
 function showSuggestions(value) {
