@@ -203,7 +203,6 @@ function feelingLucky() {
   }
 }
 
-}
 
 // Settings panel toggle
 settingsIcon.addEventListener('click', () => {
