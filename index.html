@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Floogle - The Fun Search Engine</title>
-<link href="style.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Floogle - The Fun Search Engine</title>
+  <link href="style.css" rel="stylesheet" />
 </head>
 <body>
+  <div class="top-bar">
+    <div class="theme-selector">
+      Theme:
+      <select id="theme-select">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="rainbow">Rainbow</option>
+      </select>
+    </div>
+    <div id="search-count">Searches: 0</div>
+  </div>
+
   <div class="container">
     <h1 class="logo">Floogle</h1>
     <form id="search-form">
       <input type="text" id="search-input" placeholder="Search the fun web..." autocomplete="off" required />
-      <button type="submit">Search</button>
+      <div class="autocomplete" id="autocomplete-list"></div>
+      <div class="buttons">
+        <button type="submit">Search</button>
+        <button type="button" id="lucky-btn">I'm Feeling Lucky</button>
+      </div>
     </form>
     <div id="results"></div>
   </div>
-<script src="game.js"></script>
+
+  <div class="sidebar">
+    <h3>🌟 Fun Floogle Fact</h3>
+    <div id="fun-fact"></div>
+    <div id="quiz-container"></div>
+  </div>
+
+  <audio id="search-sound" src="https://freesound.org/data/previews/66/66717_931655-lq.mp3"></audio>
+
+  <script src="game.js"></script>
 </body>
 </html>
