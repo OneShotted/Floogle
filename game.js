@@ -16,15 +16,7 @@ const searchCountDisplay = document.getElementById('search-count');
 const funFactDiv = document.getElementById('fun-fact');
 const quizContainer = document.getElementById('quiz-container');
 const searchSound = document.getElementById('search-sound');
-const authContainer = document.getElementById('auth-container');
-const profileBox = document.getElementById('profile-box');
-const loginBtn = document.getElementById('login-btn');
-const signupBtn = document.getElementById('signup-btn');
-const logoutBtn = document.getElementById('logout-btn');
-const authMessage = document.getElementById('auth-message');
-const authUsername = document.getElementById('auth-username');
-const authPassword = document.getElementById('auth-password');
-const profileUsername = document.getElementById('profile-username');
+
 
 let currentUser = null;
 
@@ -44,67 +36,6 @@ let lastSearchTerm = '';
 let quizActive = false;
 let quizInterval = null;
 let currentUser = null;
-
-// Load user data from localStorage
-function loadUsers() {
-  return JSON.parse(localStorage.getItem('floogleUsers') || '{}');
-}
-
-// Save user data to localStorage
-function saveUsers(users) {
-  localStorage.setItem('floogleUsers', JSON.stringify(users));
-}
-
-// Log the user in
-function login(username) {
-  currentUser = username;
-  profileUsername.textContent = username;
-  authContainer.classList.add('hidden');
-  profileBox.classList.remove('hidden');
-}
-
-// Handle login
-loginBtn.onclick = () => {
-  const username = authUsername.value.trim();
-  const password = authPassword.value;
-
-  const users = loadUsers();
-  if (users[username] && users[username] === password) {
-    login(username);
-  } else {
-    authMessage.textContent = 'Invalid username or password';
-  }
-};
-
-// Handle signup
-signupBtn.onclick = () => {
-  const username = authUsername.value.trim();
-  const password = authPassword.value;
-
-  if (!username || !password) {
-    authMessage.textContent = 'Enter a username and password';
-    return;
-  }
-
-  const users = loadUsers();
-  if (users[username]) {
-    authMessage.textContent = 'Username already exists';
-    return;
-  }
-
-  users[username] = password;
-  saveUsers(users);
-  login(username);
-};
-
-// Handle logout
-logoutBtn.onclick = () => {
-  currentUser = null;
-  profileBox.classList.add('hidden');
-  authContainer.classList.remove('hidden');
-  authUsername.value = '';
-  authPassword.value = '';
-};
 
 
 const funFacts = [
