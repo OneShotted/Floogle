@@ -3,39 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Floogle - Fun Search Engine</title>
+  <title>Floogle</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="light medium">
 
+  <!-- Top Navigation (Login on top-left, Settings/Game on top-right) -->
   <header>
-    <div class="logo">Floogle</div>
-
-    <div id="user-panel" class="user-panel">
-      <span id="welcome-msg" style="display:none;"></span>
-      <button id="logout-btn" style="display:none;">Logout</button>
-      <button id="login-btn">Login / Signup</button>
+    <div class="top-left">
+      <div id="user-panel">
+        <span id="welcome-msg" style="display:none;"></span>
+        <button id="logout-btn" style="display:none;">Logout</button>
+        <button id="login-btn">Login / Signup</button>
+      </div>
     </div>
-
-    <div class="top-buttons">
+    <div class="top-right">
       <button id="settings-icon" title="Settings">⚙️</button>
       <button id="play-game-btn" title="Play Games">🎮 Play Game</button>
     </div>
   </header>
 
-  <main>
-    <form id="search-form" autocomplete="off">
-      <input type="text" id="search-input" placeholder="Search Floogle..." />
-      <button type="submit">Search</button>
-      <button type="button" id="lucky-btn">I'm Feeling Lucky</button>
-      <div id="autocomplete-list" class="autocomplete-items"></div>
-    </form>
+  <!-- Main Search Area -->
+  <main id="main-content">
+    <div class="centered">
+      <div class="logo">Floogle</div>
+      <form id="search-form" autocomplete="off">
+        <input type="text" id="search-input" placeholder="Search Floogle..." />
+        <div id="autocomplete-list" class="autocomplete-items"></div>
+        <div class="buttons">
+          <button type="submit">Search</button>
+          <button type="button" id="lucky-btn">I'm Feeling Lucky</button>
+        </div>
+      </form>
+    </div>
 
     <div id="results"></div>
-
     <div id="fun-fact" class="fun-fact"></div>
     <div id="quiz-container"></div>
-
     <div id="search-count">Searches: 0</div>
 
     <div id="search-history" class="search-history" style="display:none;">
@@ -46,44 +50,38 @@
 
   <!-- Settings Panel -->
   <div id="settings-panel" class="settings-panel">
-    <button id="close-settings">Close ✖</button>
+    <button id="close-settings">✖ Close</button>
     <h3>Settings</h3>
-    <label>
-      Custom Logo Text:
+    <label>Custom Logo Text:
       <input type="text" id="custom-logo" placeholder="Floogle" />
     </label>
-    <br />
-    <label>
-      Text Size:
+    <label>Text Size:
       <select id="text-size">
         <option value="small">Small</option>
         <option value="medium" selected>Medium</option>
         <option value="large">Large</option>
       </select>
     </label>
-    <br />
-    <label>
-      Theme:
+    <label>Theme:
       <select id="theme-select">
         <option value="light" selected>Light</option>
         <option value="dark">Dark</option>
         <option value="retro">90's Web</option>
       </select>
     </label>
-    <br />
-    <label><input type="checkbox" id="toggle-safe" /> Safe Search</label><br />
-    <label><input type="checkbox" id="toggle-auto" /> Auto Search</label><br />
-    <label><input type="checkbox" id="toggle-suggest" checked /> Suggestions</label><br />
-    <label><input type="checkbox" id="toggle-delay" /> Delay Mode</label><br />
-    <label><input type="checkbox" id="toggle-easter" checked /> Easter Eggs</label><br />
-    <label><input type="checkbox" id="toggle-quiz" checked /> Quiz Mode</label><br />
-    <label><input type="checkbox" id="toggle-sponsored" /> Sponsored Results</label><br />
-    <label><input type="checkbox" id="toggle-sound" checked /> Sound Effects</label><br />
-    <label><input type="checkbox" id="toggle-virus" /> Fake Virus Mode</label><br />
-    <label><input type="checkbox" id="toggle-chaos" /> Chaos Mode</label><br />
+    <label><input type="checkbox" id="toggle-safe" /> Safe Search</label>
+    <label><input type="checkbox" id="toggle-auto" /> Auto Search</label>
+    <label><input type="checkbox" id="toggle-suggest" checked /> Suggestions</label>
+    <label><input type="checkbox" id="toggle-delay" /> Delay Mode</label>
+    <label><input type="checkbox" id="toggle-easter" checked /> Easter Eggs</label>
+    <label><input type="checkbox" id="toggle-quiz" checked /> Quiz Mode</label>
+    <label><input type="checkbox" id="toggle-sponsored" /> Sponsored Results</label>
+    <label><input type="checkbox" id="toggle-sound" checked /> Sound FX</label>
+    <label><input type="checkbox" id="toggle-virus" /> Fake Virus</label>
+    <label><input type="checkbox" id="toggle-chaos" /> Chaos Mode</label>
   </div>
 
-  <!-- Login/Signup Modal -->
+  <!-- Login Modal -->
   <div id="login-modal" class="modal hidden">
     <div class="modal-content">
       <h2>Login / Signup</h2>
@@ -101,7 +99,7 @@
 
   <!-- Game Hub -->
   <div id="game-hub" class="hidden">
-    <button id="close-game-hub">Close Games ✖</button>
+    <button id="close-game-hub">✖ Close Games</button>
     <div class="game-list">
       <h3>Select a Game</h3>
       <button data-game="duck">Duck Catcher</button>
@@ -115,10 +113,8 @@
   </div>
 
   <audio id="search-sound" src="search-sound.mp3" preload="auto"></audio>
-
   <script src="game.js"></script>
 </body>
 </html>
-
 
 
