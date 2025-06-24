@@ -1,3 +1,4 @@
+/* Base Floogle styles */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -18,9 +19,19 @@ body.rainbow {
 }
 body.matrix { background: #000; color: #0f0; }
 body.90s {
-  background: #222;
-  color: #0ff;
+  background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+  color: #00ffff;
   font-family: "Comic Sans MS", cursive;
+  cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym17.ani'), auto;
+}
+
+body.90s .logo {
+  text-shadow: 2px 2px #f0f;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 @keyframes rainbowBG {
@@ -144,6 +155,7 @@ button {
   color: white;
   cursor: pointer;
   font-size: 1rem;
+  user-select: none;
 }
 button:hover {
   background: #3367d6;
@@ -185,4 +197,211 @@ button:hover {
   border-radius: 8px;
   font-size: 0.9rem;
 }
+
+/* Game Hub Styles */
+#game-hub {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  max-height: 80vh;
+  background: #fff;
+  border: 2px solid #4285F4;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  z-index: 2000;
+  user-select: none;
+}
+#game-hub.hidden {
+  display: none;
+}
+#game-hub h2 {
+  margin-top: 0;
+  color: #4285F4;
+  text-align: center;
+}
+#game-hub .game-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+#game-hub .game-list button {
+  flex: 1 1 140px;
+  padding: 10px;
+  background: #4285F4;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#game-hub .game-list button:hover {
+  background: #3367d6;
+}
+#close-game-hub {
+  display: block;
+  margin: 0 auto;
+  background: #db4437;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+#close-game-hub:hover {
+  background: #a3332a;
+}
+
+/* Game Container */
+#game-container {
+  margin-top: 15px;
+  min-height: 300px;
+  background: #eef3ff;
+  border-radius: 8px;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+/* Duck Catcher */
+#game-container .duck {
+  width: 40px;
+  height: 40px;
+  background: yellow;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  border: 2px solid orange;
+  box-shadow: 0 0 6px 2px #ffa500aa;
+  transition: transform 0.2s ease;
+}
+#game-container .duck:hover {
+  transform: scale(1.1);
+}
+
+/* Math Blaster */
+#game-container #math-question {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+#game-container #math-answer {
+  width: 80px;
+  padding: 6px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+#game-container #math-feedback {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Reaction Test */
+#game-container #reaction-box {
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+  border-radius: 10px;
+  background: red;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+}
+#game-container #reaction-box.ready {
+  background: green;
+}
+
+/* Memory Flip */
+#game-container #memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  grid-gap: 12px;
+  justify-content: center;
+  margin-top: 15px;
+}
+#game-container .memory-card {
+  width: 60px;
+  height: 60px;
+  background: #4285F4;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  font-size: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+#game-container .memory-card.flipped {
+  background: #f0f0f0;
+  color: #333;
+  cursor: default;
+  transform: rotateY(180deg);
+}
+
+/* Avoid the Bombs */
+#game-container #dodge-game-area {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 15px auto;
+  background: #def;
+  border: 2px solid #333;
+  overflow: hidden;
+  user-select: none;
+}
+#game-container #player-square {
+  position: absolute;
+  bottom: 10px;
+  left: 140px;
+  width: 40px;
+  height: 40px;
+  background: #4285F4;
+  border-radius: 6px;
+}
+#game-container .bomb {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #f44336;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 8px 2px #d32f2f;
+}
+
+/* Typing Speed */
+#game-container #typing-text {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  user-select: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-height: 50px;
+  background: #fff;
+}
+#game-container #typing-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Hide utility */
+.hidden {
+  display: none !important;
+}
+
 
