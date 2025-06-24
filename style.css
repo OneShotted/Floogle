@@ -403,3 +403,26 @@ button:hover {
 .hidden {
   display: none !important;
 }
+#auth-container, #profile-box {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+#auth-container input {
+  display: block;
+  margin: 5px 0;
+  padding: 6px;
+  width: 160px;
+}
+#auth-message {
+  color: red;
+  font-size: 0.9rem;
+}
+.hidden {
+  display: none !important;
+}
