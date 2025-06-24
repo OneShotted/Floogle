@@ -53,6 +53,7 @@
       <div class="buttons">
         <button type="submit">Search</button>
         <button type="button" id="lucky-btn">I'm Feeling Lucky</button>
+        <button type="button" id="play-game-btn">Play Game</button>
       </div>
     </form>
     <div id="results"></div>
@@ -63,9 +64,25 @@
     <div id="quiz-container"></div>
   </div>
 
+  <!-- 🎮 Game Hub -->
+  <div id="game-hub" class="hidden">
+    <h2>Select a Game</h2>
+    <div class="game-list">
+      <button data-game="duck">🐤 Duck Catcher</button>
+      <button data-game="math">🧠 Math Blaster</button>
+      <button data-game="reaction">⚡ Reaction Test</button>
+      <button data-game="memory">🃏 Memory Flip</button>
+      <button data-game="dodge">💣 Avoid the Bombs</button>
+      <button data-game="typing">⌨️ Typing Speed</button>
+    </div>
+    <button id="close-game-hub">Back to Floogle</button>
+    <div id="game-container"></div>
+  </div>
+
   <audio id="search-sound" src="https://freesound.org/data/previews/66/66717_931655-lq.mp3"></audio>
   <script src="game.js"></script>
 </body>
 </html>
+
 
 
