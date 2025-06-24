@@ -34,13 +34,7 @@ let quizActive = false;
 let quizInterval = null;
 let currentUser = null;
 
-function loadUserData(username) {
-  return JSON.parse(localStorage.getItem('floogleUser_' + username)) || {
-    password: '',
-    searchCount: 0,
-    scores: { duck: 0, math: 0 }
-  };
-}
+
 
 function saveUserData(username, data) {
   localStorage.setItem('floogleUser_' + username, JSON.stringify(data));
