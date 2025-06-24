@@ -6,6 +6,23 @@
   <link href="style.css" rel="stylesheet" />
 </head>
 <body class="light medium">
+
+  <!-- ✅ Login/Signup Interface -->
+  <div id="auth-container">
+    <h3>Login / Signup</h3>
+    <input type="text" id="auth-username" placeholder="Username" />
+    <input type="password" id="auth-password" placeholder="Password" />
+    <button id="login-btn">Login</button>
+    <button id="signup-btn">Sign Up</button>
+    <p id="auth-message"></p>
+  </div>
+
+  <div id="profile-box" class="hidden">
+    <p>Welcome, <span id="profile-username"></span>!</p>
+    <button id="logout-btn">Logout</button>
+  </div>
+  <!-- ✅ End Login/Signup Interface -->
+
   <div class="top-bar">
     <div id="search-count">Searches: 0</div>
     <div class="theme-selector">
@@ -64,7 +81,6 @@
     <div id="quiz-container"></div>
   </div>
 
-
   <!-- 🎮 Game Hub -->
   <div id="game-hub" class="hidden">
     <h2>Select a Game</h2>
@@ -84,4 +100,3 @@
   <script src="game.js"></script>
 </body>
 </html>
-
