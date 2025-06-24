@@ -98,16 +98,15 @@ function updateSearchCount() {
 function renderResults(term) {
   resultsDiv.innerHTML = '';
 
-  // If safeSearch, no jokes (dummy example)
-  const filteredData = safeSearch ? dummyData.filter(r => !r.title.toLowerCase().includes('funny')) : dummyData;
+  const filteredData = safeSearch
+    ? dummyData.filter(r => !r.title.toLowerCase().includes('funny'))
+    : dummyData;
 
-  // Show matches from dummyData filtered by search term
   const matches = filteredData.filter(r =>
     r.title.toLowerCase().includes(term.toLowerCase()) ||
     r.snippet.toLowerCase().includes(term.toLowerCase())
   );
 
-  // Render existing matched results first
   matches.forEach(r => {
     const item = document.createElement('div');
     item.classList.add('result-item');
@@ -119,7 +118,6 @@ function renderResults(term) {
     resultsDiv.appendChild(item);
   });
 
-  // Then add 7 funny dynamic results based on search term
   const funnyTemplates = [
     "5 facts about ({term}) that will shock you!",
     "Why everyone is talking about ({term})",
@@ -130,9 +128,19 @@ function renderResults(term) {
     "Is ({term}) the next big thing? Experts weigh in"
   ];
 
+  const funnyLinks = [
+    "https://gettricked.net",
+    "https://yournotsmart.co",
+    "https://tomfoolery.info",
+    "https://wikipodium.rizz",
+    "https://info.pro",
+    "https://newinformation.com",
+    "https://freshavacado.net"
+  ];
+
   for (let i = 0; i < funnyTemplates.length; i++) {
     const title = funnyTemplates[i].replace(/\(\{term\}\)/g, term);
-    const fakeLink = `https://fakelink${i + 1}.net/${encodeURIComponent(term.toLowerCase().replace(/\s+/g, '-'))}`;
+    const fakeLink = funnyLinks[i];
 
     const item = document.createElement('div');
     item.classList.add('result-item');
@@ -144,7 +152,6 @@ function renderResults(term) {
     resultsDiv.appendChild(item);
   }
 
-  // If no results at all (matches + funny) show no results message (only if no dummyData matched)
   if (matches.length === 0 && funnyTemplates.length === 0) {
     resultsDiv.innerHTML = `<p>No results found for <strong>${term}</strong>.</p>`;
   }
