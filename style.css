@@ -1,62 +1,92 @@
-/* Minimal clean style inspired by Google */
 body {
-  background: #fff;
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
-  margin: 0; padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding-top: 150px;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.light {
+  background: #ffffff;
   color: #202124;
 }
 
+body.dark {
+  background: #121212;
+  color: #ffffff;
+}
+
+body.rainbow {
+  background: linear-gradient(135deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400% 400%;
+  animation: rainbowBG 10s ease infinite;
+  color: #fff;
+}
+
+@keyframes rainbowBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
 .container {
-  max-width: 600px;
-  width: 90%;
   text-align: center;
+  padding: 100px 20px 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .logo {
   font-size: 4rem;
-  font-weight: 700;
-  color: #4285F4; /* Floogle blue */
-  margin-bottom: 20px;
+  color: #4285F4;
   user-select: none;
-  cursor: default;
 }
 
 #search-form {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 30px;
+  position: relative;
 }
 
 #search-input {
-  flex: 1;
+  width: 100%;
   padding: 12px 16px;
   font-size: 1.2rem;
-  border: 1px solid #dfe1e5;
   border-radius: 24px;
+  border: 1px solid #ccc;
   outline: none;
-  transition: box-shadow 0.2s ease;
+  margin-bottom: 10px;
 }
 
-#search-input:focus {
-  box-shadow: 0 0 8px #4285F4;
-  border-color: #4285F4;
+.autocomplete {
+  position: absolute;
+  background: white;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.autocomplete div {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.autocomplete div:hover {
+  background: #eee;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 button {
-  padding: 12px 24px;
-  font-size: 1.2rem;
-  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
   border-radius: 24px;
+  border: none;
   background: #4285F4;
   color: white;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
 button:hover {
@@ -64,17 +94,17 @@ button:hover {
 }
 
 #results {
+  margin-top: 30px;
   text-align: left;
 }
 
 .result-item {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .result-title {
   font-size: 1.1rem;
   color: #1a0dab;
-  cursor: pointer;
   text-decoration: none;
 }
 
@@ -93,3 +123,30 @@ button:hover {
   font-size: 0.9rem;
   color: #545454;
 }
+
+.sidebar {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  width: 250px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.top-bar {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.theme-selector select {
+  padding: 4px 8px;
+  font-size: 1rem;
+}
+
