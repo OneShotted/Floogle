@@ -1,115 +1,127 @@
-/* Basic styling */
+/* === Layout === */
 
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
+  font-family: Arial, sans-serif;
   background: #fff;
-  color: #222;
-  transition: background 0.3s, color 0.3s;
-}
-
-body.dark {
-  background: #121212;
-  color: #ddd;
-}
-
-body.retro {
-  background: #fffae6;
-  color: #006400;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: bold;
+  color: #202124;
 }
 
 header {
   display: flex;
   justify-content: space-between;
+  padding: 10px 15px;
+  position: relative;
+}
+
+.top-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#main-content {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 10px 20px;
-  background: #4285f4;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  margin-top: 10vh;
+}
+
+.centered {
+  text-align: center;
+  width: 100%;
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: bold;
+  color: #4285f4;
+  margin-bottom: 20px;
   user-select: none;
 }
 
-.user-panel {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-panel button {
-  cursor: pointer;
-  background: #357ae8;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 3px;
-}
-
-.top-buttons button {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
-  color: white;
-  margin-left: 10px;
-}
-
-main {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 0 10px;
-}
-
 #search-form {
-  position: relative;
-  display: flex;
-  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 #search-input {
-  flex: 1;
-  padding: 8px;
+  width: 100%;
+  padding: 12px 16px;
   font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  outline: none;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+button:hover {
+  background: #f1f3f4;
 }
 
 #autocomplete-list {
   position: absolute;
-  background: white;
+  background: #fff;
   border: 1px solid #ccc;
-  max-height: 120px;
+  width: calc(100% - 2px);
+  max-height: 150px;
   overflow-y: auto;
-  width: calc(100% - 100px);
-  top: 38px;
-  z-index: 20;
+  z-index: 5;
+  margin-top: 4px;
+  border-radius: 4px;
 }
 
 .autocomplete-items div {
-  padding: 5px;
+  padding: 8px 12px;
   cursor: pointer;
 }
 
 .autocomplete-items div:hover {
-  background-color: #ddd;
+  background: #f1f1f1;
+}
+
+#results {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 700px;
 }
 
 .result-item {
   border-bottom: 1px solid #eee;
-  padding: 8px 0;
+  padding: 10px 0;
 }
 
 .result-title {
+  font-size: 1.2rem;
   color: #1a0dab;
-  font-weight: bold;
-  font-size: 1.1rem;
   text-decoration: none;
+}
+
+.result-title:hover {
+  text-decoration: underline;
 }
 
 .result-link {
@@ -118,36 +130,21 @@ main {
 }
 
 .result-snippet {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #545454;
 }
 
-.fun-fact {
-  margin-top: 20px;
-  font-style: italic;
-  text-align: center;
-}
-
-#quiz-container {
-  margin-top: 20px;
-  text-align: center;
-}
-
-#search-count {
-  margin-top: 20px;
-  font-weight: bold;
-  text-align: center;
-}
+/* === Settings Panel === */
 
 .settings-panel {
   position: fixed;
-  top: 50px;
+  top: 60px;
   right: 10px;
   width: 280px;
   background: white;
   border: 1px solid #ccc;
   padding: 15px;
-  z-index: 50;
+  z-index: 20;
   box-shadow: 0 0 8px rgba(0,0,0,0.3);
   display: none;
 }
@@ -158,11 +155,11 @@ main {
 
 .settings-panel label {
   display: block;
-  margin-bottom: 10px;
+  margin: 8px 0;
   font-size: 0.9rem;
 }
 
-/* Modal styling */
+/* === Modal === */
 
 .modal {
   position: fixed;
@@ -174,7 +171,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 50;
 }
 
 .modal.hidden {
@@ -186,21 +183,21 @@ main {
   padding: 20px 30px;
   border-radius: 8px;
   width: 320px;
-  max-width: 90%;
   text-align: center;
 }
 
 .modal-content input[type="text"],
 .modal-content input[type="password"] {
   width: 90%;
-  padding: 8px;
+  padding: 10px;
   margin: 8px 0 12px;
   font-size: 1rem;
 }
 
 .modal-content button {
-  padding: 8px 15px;
+  padding: 10px 15px;
   font-size: 1rem;
+  margin-top: 10px;
   cursor: pointer;
 }
 
@@ -210,47 +207,52 @@ main {
   font-weight: bold;
 }
 
-/* Search History */
+/* === Search History === */
 
 .search-history {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  padding: 10px;
-  max-height: 160px;
-  overflow-y: auto;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 30px;
+  padding: 15px;
+  background: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+}
+
+.search-history h3 {
+  margin-top: 0;
 }
 
 .search-history ul {
-  list-style-type: disc;
   padding-left: 20px;
   margin: 0;
 }
 
 .search-history li {
   cursor: pointer;
-  padding: 4px 0;
   color: #1a0dab;
-  text-decoration: underline;
+  padding: 4px 0;
+  list-style-type: disc;
 }
 
 .search-history li:hover {
-  color: #0041c4;
+  text-decoration: underline;
 }
 
-/* Game Hub */
+/* === Game Hub === */
 
 #game-hub {
   position: fixed;
-  top: 60px;
+  top: 70px;
   right: 10px;
-  background: #fafafa;
-  border: 1px solid #ccc;
-  padding: 15px;
   width: 320px;
   max-height: 75vh;
   overflow-y: auto;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  z-index: 90;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  z-index: 30;
+  display: none;
 }
 
 #game-hub.hidden {
@@ -260,34 +262,29 @@ main {
 #game-hub button {
   margin: 5px 0;
   width: 100%;
-  padding: 8px;
-  cursor: pointer;
 }
 
 #game-container {
   margin-top: 15px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
 }
 
-/* Duck catcher game */
+/* === Game Elements (e.g. duck, bomb, etc.) === */
+
 .duck {
   position: absolute;
   width: 40px;
   height: 40px;
-  background: url('duck.png') no-repeat center / contain;
+  background: url('duck.png') no-repeat center/contain;
   cursor: pointer;
 }
 
-/* Bombs */
 .bomb {
   position: absolute;
   width: 30px;
   height: 30px;
-  background: url('bomb.png') no-repeat center / contain;
+  background: url('bomb.png') no-repeat center/contain;
 }
 
-/* Player square for dodge game */
 #player-square {
   position: absolute;
   width: 40px;
@@ -296,7 +293,6 @@ main {
   border-radius: 4px;
 }
 
-/* Memory flip cards */
 .memory-card {
   width: 60px;
   height: 60px;
@@ -317,6 +313,18 @@ main {
   cursor: default;
 }
 
+/* === Fun Fact & Quiz === */
+
+.fun-fact {
+  margin-top: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+#quiz-container {
+  margin-top: 20px;
+  text-align: center;
+}
 
 
 
