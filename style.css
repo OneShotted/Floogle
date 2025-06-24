@@ -1,407 +1,322 @@
-/* Base Floogle styles */
+/* Basic styling */
+
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #222;
   transition: background 0.3s, color 0.3s;
-  font-size: 16px;
-}
-body.small { font-size: 14px; }
-body.medium { font-size: 16px; }
-body.large { font-size: 18px; }
-
-body.light { background: #fff; color: #202124; }
-body.dark { background: #121212; color: #f0f0f0; }
-body.rainbow {
-  background: linear-gradient(135deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 400% 400%;
-  animation: rainbowBG 10s ease infinite;
-  color: #fff;
-}
-body.matrix { background: #000; color: #0f0; }
-body.90s {
-  background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-  color: #00ffff;
-  font-family: "Comic Sans MS", cursive;
-  cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym17.ani'), auto;
 }
 
-body.90s .logo {
-  text-shadow: 2px 2px #f0f;
-  animation: blink 1s step-start infinite;
+body.dark {
+  background: #121212;
+  color: #ddd;
 }
 
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-@keyframes rainbowBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.top-bar {
-  position: fixed;
-  top: 8px;
-  left: 20px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  z-index: 1000;
-}
-.theme-selector select {
-  padding: 4px;
-}
-#search-count {
-  font-size: 1rem;
-}
-
-#settings-icon {
-  position: fixed;
-  top: 8px;
-  right: 20px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-#settings-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 260px;
-  height: 100vh;
-  background: #f9f9f9;
-  border-left: 1px solid #ccc;
-  padding: 16px;
-  box-shadow: -2px 0 8px rgba(0,0,0,.2);
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
-#settings-panel.show {
-  transform: translateX(0);
-}
-#settings-panel h2 {
-  margin-top: 0;
-}
-#settings-panel label {
-  display: block;
-  margin: 10px 0;
-  font-size: 0.9rem;
-}
-#settings-panel button {
-  margin-top: 20px;
-  padding: 8px;
-  font-size: 1rem;
-  background: #4285F4;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-#settings-panel button:hover {
-  background: #3367d6;
-}
-
-.container {
-  max-width: 600px;
-  margin: 120px auto 20px;
-  text-align: center;
-  padding: 0 20px;
-}
-.logo {
-  font-size: 4rem;
-  color: #4285F4;
-  user-select: none;
-}
-#search-form {
-  position: relative;
-}
-#search-input {
-  width: 100%;
-  padding: 10px 14px;
-  font-size: 1rem;
-  border-radius: 24px;
-  border: 1px solid #ccc;
-  outline: none;
-}
-.autocomplete {
-  position: absolute;
-  width: 100%;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  z-index: 10;
-}
-.autocomplete div {
-  padding: 6px 10px;
-  cursor: pointer;
-}
-.autocomplete div:hover {
-  background: #eee;
-}
-.buttons {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-button {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 24px;
-  background: #4285F4;
-  color: white;
-  cursor: pointer;
-  font-size: 1rem;
-  user-select: none;
-}
-button:hover {
-  background: #3367d6;
-}
-
-#results {
-  margin-top: 30px;
-  text-align: left;
-}
-.result-item {
-  margin-bottom: 18px;
-}
-.result-title {
-  font-size: 1.1rem;
-  color: #1a0dab;
-  text-decoration: none;
-}
-.result-title:hover {
-  text-decoration: underline;
-}
-.result-link {
-  font-size: 0.9rem;
-  color: #006621;
-  margin-bottom: 4px;
-}
-.result-snippet {
-  font-size: 0.9rem;
-  color: #545454;
-}
-
-.sidebar {
-  position: fixed;
-  top: 100px;
-  right: 20px;
-  width: 240px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #ccc;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-}
-
-/* Game Hub Styles */
-#game-hub {
-  position: fixed;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 350px;
-  max-height: 80vh;
-  background: #fff;
-  border: 2px solid #4285F4;
-  border-radius: 10px;
-  padding: 20px;
-  overflow-y: auto;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  z-index: 2000;
-  user-select: none;
-}
-#game-hub.hidden {
-  display: none;
-}
-#game-hub h2 {
-  margin-top: 0;
-  color: #4285F4;
-  text-align: center;
-}
-#game-hub .game-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-#game-hub .game-list button {
-  flex: 1 1 140px;
-  padding: 10px;
-  background: #4285F4;
-  color: white;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-#game-hub .game-list button:hover {
-  background: #3367d6;
-}
-#close-game-hub {
-  display: block;
-  margin: 0 auto;
-  background: #db4437;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-}
-#close-game-hub:hover {
-  background: #a3332a;
-}
-
-/* Game Container */
-#game-container {
-  margin-top: 15px;
-  min-height: 300px;
-  background: #eef3ff;
-  border-radius: 8px;
-  padding: 10px;
-  overflow: hidden;
-  position: relative;
-  user-select: none;
-}
-
-/* Duck Catcher */
-#game-container .duck {
-  width: 40px;
-  height: 40px;
-  background: yellow;
-  border-radius: 50%;
-  position: absolute;
-  cursor: pointer;
-  border: 2px solid orange;
-  box-shadow: 0 0 6px 2px #ffa500aa;
-  transition: transform 0.2s ease;
-}
-#game-container .duck:hover {
-  transform: scale(1.1);
-}
-
-/* Math Blaster */
-#game-container #math-question {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-#game-container #math-answer {
-  width: 80px;
-  padding: 6px;
-  font-size: 1.1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-#game-container #math-feedback {
-  margin-top: 10px;
+body.retro {
+  background: #fffae6;
+  color: #006400;
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
 }
 
-/* Reaction Test */
-#game-container #reaction-box {
-  width: 200px;
-  height: 200px;
-  margin: 20px auto;
-  border-radius: 10px;
-  background: red;
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.3s;
-}
-#game-container #reaction-box.ready {
-  background: green;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #4285f4;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-/* Memory Flip */
-#game-container #memory-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 60px);
-  grid-gap: 12px;
-  justify-content: center;
-  margin-top: 15px;
-}
-#game-container .memory-card {
-  width: 60px;
-  height: 60px;
-  background: #4285F4;
-  border-radius: 8px;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
+.logo {
   font-size: 2rem;
+  font-weight: bold;
+  user-select: none;
+}
+
+.user-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-panel button {
+  cursor: pointer;
+  background: #357ae8;
+  border: none;
   color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.top-buttons button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  margin-left: 10px;
+}
+
+main {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+#search-form {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+
+#search-input {
+  flex: 1;
+  padding: 8px;
+  font-size: 1.1rem;
+}
+
+#autocomplete-list {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 120px;
+  overflow-y: auto;
+  width: calc(100% - 100px);
+  top: 38px;
+  z-index: 20;
+}
+
+.autocomplete-items div {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.autocomplete-items div:hover {
+  background-color: #ddd;
+}
+
+.result-item {
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+
+.result-title {
+  color: #1a0dab;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.result-link {
+  font-size: 0.9rem;
+  color: #006621;
+}
+
+.result-snippet {
+  font-size: 0.95rem;
+  color: #545454;
+}
+
+.fun-fact {
+  margin-top: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+#quiz-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#search-count {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.settings-panel {
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  width: 280px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  z-index: 50;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  display: none;
+}
+
+.settings-panel.show {
+  display: block;
+}
+
+.settings-panel label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+/* Modal styling */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
-}
-#game-container .memory-card.flipped {
-  background: #f0f0f0;
-  color: #333;
-  cursor: default;
-  transform: rotateY(180deg);
+  z-index: 100;
 }
 
-/* Avoid the Bombs */
-#game-container #dodge-game-area {
-  position: relative;
-  width: 320px;
-  height: 320px;
-  margin: 15px auto;
-  background: #def;
-  border: 2px solid #333;
-  overflow: hidden;
-  user-select: none;
+.modal.hidden {
+  display: none;
 }
-#game-container #player-square {
+
+.modal-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 320px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+  width: 90%;
+  padding: 8px;
+  margin: 8px 0 12px;
+  font-size: 1rem;
+}
+
+.modal-content button {
+  padding: 8px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-message {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+/* Search History */
+
+.search-history {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.search-history ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.search-history li {
+  cursor: pointer;
+  padding: 4px 0;
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.search-history li:hover {
+  color: #0041c4;
+}
+
+/* Game Hub */
+
+#game-hub {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  background: #fafafa;
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 320px;
+  max-height: 75vh;
+  overflow-y: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  z-index: 90;
+}
+
+#game-hub.hidden {
+  display: none;
+}
+
+#game-hub button {
+  margin: 5px 0;
+  width: 100%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#game-container {
+  margin-top: 15px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+/* Duck catcher game */
+.duck {
   position: absolute;
-  bottom: 10px;
-  left: 140px;
   width: 40px;
   height: 40px;
-  background: #4285F4;
-  border-radius: 6px;
+  background: url('duck.png') no-repeat center / contain;
+  cursor: pointer;
 }
-#game-container .bomb {
+
+/* Bombs */
+.bomb {
   position: absolute;
   width: 30px;
   height: 30px;
-  background: #f44336;
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-  box-shadow: 0 0 8px 2px #d32f2f;
+  background: url('bomb.png') no-repeat center / contain;
 }
 
-/* Typing Speed */
-#game-container #typing-text {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+/* Player square for dodge game */
+#player-square {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: blue;
+  border-radius: 4px;
+}
+
+/* Memory flip cards */
+.memory-card {
+  width: 60px;
+  height: 60px;
+  background: #eee;
+  border: 1px solid #ccc;
+  margin: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
   user-select: none;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  min-height: 50px;
-  background: #fff;
-}
-#game-container #typing-input {
-  width: 100%;
-  padding: 8px;
-  font-size: 1.2rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  border-radius: 4px;
 }
 
-/* Hide utility */
-.hidden {
-  display: none !important;
+.memory-card.flipped {
+  background: #fff;
+  cursor: default;
 }
+
+
 
 
