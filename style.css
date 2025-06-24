@@ -403,5 +403,22 @@ button:hover {
 .hidden {
   display: none !important;
 }
+#settings-panel {
+  position: fixed;
+  top: 60px;            /* Adjust if you have a top bar height */
+  right: -280px;        /* Start hidden offscreen */
+  width: 260px;         /* Your panel width */
+  height: calc(100vh - 60px);
+  background: #f9f9f9;
+  border-left: 1px solid #ccc;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  padding: 16px;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
 
+#settings-panel.show {
+  right: 0;             /* Slide in fully visible */
+}
 
