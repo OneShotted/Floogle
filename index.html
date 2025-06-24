@@ -1,47 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Floogle Search Engine</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Floogle</title>
+  <link href="style.css" rel="stylesheet" />
 </head>
-<body>
-  <!-- Top bar -->
-  <header id="header-bar">
-    <button id="login-btn-header">Login</button>
-    <div id="welcome-msg"></div>
-    <button id="logout-btn" style="display:none;">Logout</button>
-  </header>
-
-  <!-- Main container -->
-  <main id="main-container">
-    <div id="search-container">
-      <input id="search-input" type="text" placeholder="Search Floogle or play games" autocomplete="off" />
-      <button id="search-button">Search</button>
+<body class="light medium">
+  <div class="top-bar">
+    <div id="search-count">Searches: 0</div>
+    <div class="theme-selector">
+      Theme:
+      <select id="theme-select">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="rainbow">Rainbow</option>
+        <option value="matrix">Matrix</option>
+        <option value="90s">90s Web</option>
+      </select>
     </div>
-
-    <div id="results-container"></div>
-    <div id="game-hub"></div>
-  </main>
-
-  <!-- Search History panel -->
-  <div id="search-history" style="display:none;">
-    <h3>Search History</h3>
-    <ul id="history-list"></ul>
   </div>
 
-  <!-- Achievements panel -->
-  <div id="achievements" style="display:none;">
-    <h3>Achievements</h3>
-    <ul id="achievement-list"></ul>
+  <!-- Settings -->
+  <div id="settings-icon">⚙️</div>
+  <div id="settings-panel" class="hidden">
+    <h2>Settings</h2>
+    <label>Logo Text: <input type="text" id="custom-logo" placeholder="Floogle" /></label>
+    <label>Text Size:
+      <select id="text-size">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="toggle-safe" /> Safe Search (no jokes)</label>
+    <label><input type="checkbox" id="toggle-auto" /> Auto Search on Type</label>
+    <label><input type="checkbox" id="toggle-suggest" checked /> Search Suggestions</label>
+    <label><input type="checkbox" id="toggle-delay" /> Search Delay Mode</label>
+    <label><input type="checkbox" id="toggle-easter" checked /> Enable Easter Eggs</label>
+    <label><input type="checkbox" id="toggle-quiz" checked /> Quiz Mode every 3 searches</label>
+    <label><input type="checkbox" id="toggle-sponsored" /> Sponsored Results</label>
+    <label><input type="checkbox" id="toggle-sound" checked /> Sound FX</label>
+    <label><input type="checkbox" id="toggle-virus" /> Fake Virus Mode</label>
+    <label><input type="checkbox" id="toggle-chaos" /> Lucky Chaos Mode</label>
+    <button id="close-settings">Close</button>
   </div>
 
-  <!-- Leaderboards panel inside game hub (added by JS) -->
+  <div class="container">
+    <h1 class="logo">Floogle</h1>
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Search the fun web..." autocomplete="off" required />
+      <div class="autocomplete" id="autocomplete-list"></div>
+      <div class="buttons">
+        <button type="submit">Search</button>
+        <button type="button" id="lucky-btn">I'm Feeling Lucky</button>
+        <button type="button" id="play-game-btn">Play Game</button>
+      </div>
+    </form>
+    <div id="results"></div>
+  </div>
 
-  <!-- Login Modal (added by JS) -->
+  <div class="sidebar">
+    <h3>🌟 Floogle Fact</h3><div id="fun-fact"></div>
+    <div id="quiz-container"></div>
+  </div>
 
+  <!-- 🎮 Game Hub -->
+  <div id="game-hub" class="hidden">
+    <h2>Select a Game</h2>
+    <div class="game-list">
+      <button data-game="duck">🐤 Duck Catcher</button>
+      <button data-game="math">🧠 Math Blaster</button>
+      <button data-game="reaction">⚡ Reaction Test</button>
+      <button data-game="memory">🃏 Memory Flip</button>
+      <button data-game="dodge">💣 Avoid the Bombs</button>
+      <button data-game="typing">⌨️ Typing Speed</button>
+    </div>
+    <button id="close-game-hub">Back to Floogle</button>
+    <div id="game-container"></div>
+  </div>
+
+  <audio id="search-sound" src="https://freesound.org/data/previews/66/66717_931655-lq.mp3"></audio>
   <script src="game.js"></script>
 </body>
 </html>
-
