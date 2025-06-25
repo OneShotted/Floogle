@@ -19,15 +19,21 @@ body.rainbow {
 }
 body.matrix { background: #000; color: #0f0; }
 body.90s {
-  background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+  background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'), #000;
   color: #00ffff;
   font-family: "Comic Sans MS", cursive;
   cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym17.ani'), auto;
+  image-rendering: pixelated;
+  background-repeat: repeat;
 }
 
 body.90s .logo {
-  text-shadow: 2px 2px #f0f;
+  text-shadow: 2px 2px #ff00ff;
   animation: blink 1s step-start infinite;
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 @keyframes blink {
