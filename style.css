@@ -36,8 +36,22 @@ body.90s .logo {
   letter-spacing: 2px;
 }
 
+body.90s button,
+body.90s input[type="text"],
+body.90s input[type="submit"] {
+  background-color: #000080;
+  color: #00ffff;
+  border: 3px outset #00ffff;
+  font-family: "Comic Sans MS", cursive;
+  padding: 8px 12px;
+  margin: 4px;
+  box-shadow: 2px 2px #ff00ff;
+}
+
 @keyframes blink {
-  50% { opacity: 0; }
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
 }
 
 @keyframes rainbowBG {
